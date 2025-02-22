@@ -14,33 +14,41 @@ function MailboxForm({ addBox }) {
       return;
     }
 
-    addBox(boxOwner, boxSize); // ✅ Call `addBox` function
-    navigate("/mailboxes"); // ✅ Redirect back to mailboxes list
+    addBox(boxOwner, boxSize); //  Call `addBox` function
+    navigate("/mailboxes"); //  Redirect back to mailboxes list
   };
 
   return (
     <div>
       <h2>Create a New Mailbox</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          Box Size:
-          <input
-            type="text"
-            value={boxSize}
-            onChange={(e) => setBoxSize(e.target.value)}
-          />
-        </label>
-<br/>
-        <label>
-          Box Owner:
+      <label>
+         Enter a Boxholder:
           <input
             type="text"
             value={boxOwner}
-            onChange={(e) => setBoxOwner(e.target.value)}
+            onChange={(e) => setBoxOwner(e.target.value)} required
           />
         </label>
+        <br/>
 
-        <button type="submit">Add Mailbox</button>
+        <label>
+       Select a Box Size:
+          {/* <input
+            type="text"
+            value={boxSize}
+            onChange={(e) => setBoxSize(e.target.value)} 
+          /> */}
+          <select value ={boxSize} onChange ={(e) => setBoxSize(e.target.value)}>
+<option value = "Small">Small</option>
+<option value = "Medium">Medium</option>
+<option value = "Large">Large</option>
+          </select>
+        </label>
+
+       
+
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
